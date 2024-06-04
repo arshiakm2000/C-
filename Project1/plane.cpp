@@ -11,11 +11,6 @@ plane::plane()
 
 }
 
-plane::~plane()
-{
-
-}
-
 size_t plane::lives()
 {
 	return Lives;

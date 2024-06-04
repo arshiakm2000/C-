@@ -11,7 +11,7 @@ public:
 	char lowerWing[3];
 	char body[7];
 	plane();
-	virtual ~plane();
+	virtual ~plane() = default;
 	size_t lives();
 	size_t position();
 	bool changePosition(bool direction);

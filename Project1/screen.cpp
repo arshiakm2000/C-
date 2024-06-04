@@ -10,12 +10,12 @@ const size_t screenSizeX = 100;
 const size_t screenSizeY = 21;
 
 
-void screen::printGame(plane& Drone)
+void screen::printGame(plane& Drone,obstacle& stone)
 {
 	printHeader(Drone);
 	for (size_t i = 0; i < screenSizeY; i++)
 	{
-		printLine(i, Drone);
+		printLine(i, Drone, stone);
 
 	}
 	for (size_t i = 0; i < screenSizeX; i++)
@@ -47,9 +47,10 @@ void screen::printHeader(plane& Drone)
 
 }
 
-void screen::printLine(size_t line, plane& Drone)
+void screen::printLine(size_t line, plane& Drone, obstacle& stone)
 {
 	size_t dec = 2;
+
 	cout << "|";
 	if (line == Drone.position() - 1) {
 
@@ -66,12 +67,30 @@ void screen::printLine(size_t line, plane& Drone)
 		cout << " " << Drone.lowerWing;
 		dec = 5;
 	}
-	
-	for (size_t i = 0; i < screenSizeX - dec; i++)
-	{
-		cout << " ";
 
+	if (line == stone.positionY()) {
+
+		for (size_t i = 0; i < stone.positionX() - 1 - dec; i++)
+		{
+			cout << " ";
+			 
+		}
+		cout << stone.shape();
+		for (size_t i = 0; i < screenSizeX - stone.positionX(); i++)
+		{
+			cout << " ";
+		}
+		cout << "|" << endl;
 	}
-	cout << "|" << endl;
+	else
+	{
+		for (size_t i = 0; i < screenSizeX - dec; i++)
+		{
+			cout << " ";
+		}
+		cout << "|" << endl;
+	}
+	
+	
 
 }

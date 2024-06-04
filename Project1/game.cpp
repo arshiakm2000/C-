@@ -6,13 +6,15 @@
 using namespace std;
 int main() {
 	plane drone;
+	obstacle stone;
 	screen sc;
 	char entery = ' ';
 	while (1)
 	{
 		system("CLS");
-		sc.printGame(drone);
+		sc.printGame(drone, stone);
 		entery = _getch();
+		stone.changePosition();
 		if (entery == 'w') {
 			drone.changePosition(1);
 		}
